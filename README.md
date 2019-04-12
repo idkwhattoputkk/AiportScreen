@@ -1,3 +1,3 @@
 # Laboratorio-4
-# Estudiant: Emmanuel Umaña Grajales
+# Estudiante: Emmanuel Umaña Grajales
 # Codigo: A00351911
