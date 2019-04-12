@@ -175,7 +175,10 @@ public class Airport {
 			if(flights.get(i).getAirline().equalsIgnoreCase(name)) {
 				ended=true;
 				toPaint = (Flight)flights.get(i);
-			}
+				ObservableList<Flight> tt = FXCollections.observableArrayList();
+				tt.add(toPaint);
+				setFlights(tt);
+				}
 		}
 		return toPaint;
 	}
@@ -226,6 +229,28 @@ public class Airport {
 				}
 			}
 			}
+	}
+	// binary search
+	public void searchBYTime(String time) {
+		orderByTime();
+		int init=0;
+		boolean ended = false;
+		int end= flights.size()-1;
+		Flight toSearch = new Flight(time, "", "", "", "", 1);
+		while(init<= end && !ended) {
+			int middle=(init+end)/2;
+			Flight mid = (Flight)flights.get(middle);
+			if(mid.compareByTime(toSearch)==0) {
+				ended=true;
+				ObservableList<Flight> tt = FXCollections.observableArrayList();
+				tt.add(mid);
+				setFlights(tt);
+			}else if(mid.compareByTime(toSearch)>0) {
+				end = middle-1;
+			}else {
+				end= middle+1;
+			}
+		}
 	}
 		
 }

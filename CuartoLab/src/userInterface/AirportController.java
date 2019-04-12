@@ -77,6 +77,21 @@ public class AirportController {
     	String search = tfSearch.getText();
     	if(!search.equals("")) {
     		airport.searchByAirline(search);
+    		tableFlights.setItems(airport.getFlights());
+    	}else {
+    		tfSearch.requestFocus();
+    	}
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    @FXML
+    public void SearchTime(ActionEvent event) throws NullPointerException {
+    	try {
+    	String search = tfSearch.getText();
+    	if(!search.equals("")) {
+    		airport.searchBYTime(search);
+    		tableFlights.setItems(airport.getFlights());
     	}else {
     		tfSearch.requestFocus();
     	}
